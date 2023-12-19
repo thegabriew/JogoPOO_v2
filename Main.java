@@ -113,6 +113,5 @@ public class Main {
     private static void realizarAtaque(Personagem atacante, Personagem alvo, Scanner scanner) {
         // O restante do código permanece o mesmo
     }
-          scanner.close();
 
 }
