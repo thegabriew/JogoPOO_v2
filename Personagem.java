@@ -1,3 +1,8 @@
+package Jogo;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Personagem {
   private int vida;
   private int ataque;
@@ -39,4 +44,15 @@ public class Personagem {
   public void setArma(String arma) {
     this.arma = arma;
   }
-}
+  public List <String> getArmas(){
+	  return Arrays.asList(null);
+  }
+  
+ public List<String> getAtaques(){
+	  return Arrays.asList(null);
+  }
+ 
+ public int atacar(int ataque, Personagem alvo) {
+	 return 0;
+ }
+ }
