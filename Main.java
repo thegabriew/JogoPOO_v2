@@ -1,4 +1,8 @@
+package Jogo;
+
 import java.util.Scanner;
+import java.util.List;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -119,29 +123,39 @@ public class Main {
     }
 
     private static void realizarAtaque(Personagem atacante, Personagem alvo, Scanner scanner) {
-    // Obtém a lista de ataques disponíveis para o atacante
-    List<Ataque> ataquesDisponiveis = atacante.getAtaques();
+        // Obtém a lista de ataques disponíveis para o atacante
+        List<String> ataquesDisponiveis = atacante.getAtaques();
+     
+        // Mostra os ataques disponíveis para o jogador
+        System.out.println("Ataques disponíveis: ");
+        System.out.println(ataquesDisponiveis);
 
-    // Mostra os ataques disponíveis para o jogador
-    System.out.println("Ataques disponíveis para " + atacante.getNome() + ":");
-    for (int i = 0; i < ataquesDisponiveis.size(); i++) {
-        System.out.println((i + 1) + " - " + ataquesDisponiveis.get(i).getNome());
+        // Jogador escolhe um ataque
+        System.out.println("Escolha um ataque:");
+        int escolhaAtaque = scanner.nextInt();
+
+        // Obtém o ataque escolhido
+        int ataqueEscolhido = escolhaAtaque;
+
+        // Executa o ataque no alvo
+        
+        //POSSUI ERRO
+        int danoCausado = 0;
+
+        if (atacante instanceof Assassino) {
+            danoCausado = ((Assassino) atacante).atacar(ataqueEscolhido, alvo);
+        } else if (atacante instanceof Samurai) {
+            danoCausado = ((Samurai) atacante).atacar(ataqueEscolhido, alvo);
+        } else if (atacante instanceof Cowboy) {
+            danoCausado = ((Cowboy) atacante).atacar(ataqueEscolhido, alvo);
+        } else if (atacante instanceof Mago) {
+            danoCausado = ((Mago) atacante).atacar(ataqueEscolhido, alvo);
+        }
+
+        // Exibe o resultado do ataque
+        System.out.println("Jogador usou " + ataqueEscolhido +
+                " causando " + danoCausado + " de dano. \nVida restante: " + alvo.getVida());
     }
-
-    // Jogador escolhe um ataque
-    System.out.println("Escolha um ataque:");
-    int escolhaAtaque = scanner.nextInt();
-
-    // Obtém o ataque escolhido
-    Ataque ataqueEscolhido = ataquesDisponiveis.get(escolhaAtaque - 1);
-
-    // Executa o ataque no alvo
-    int danoCausado = atacante.atacar(ataqueEscolhido, alvo);
-
-    // Exibe o resultado do ataque
-    System.out.println(atacante.getNome() + " usou " + ataqueEscolhido.getNome() +
-            " causando " + danoCausado + " de dano. Vida restante de " + alvo.getNome() + ": " + alvo.getVida());
-}
 
     private static String getNomeClasse(Personagem jogador) {
         if (jogador instanceof Assassino) {
