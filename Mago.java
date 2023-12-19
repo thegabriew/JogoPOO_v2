@@ -1,41 +1,58 @@
-public class Mago extends Personagem {
+package Jogo;
 
-    public static final String ARMA_VARINHA_MAGICA = "Varinha mágica";
-    public static final String ARMA_LIVRO_DE_FEITICOS = "Livro de feitiços";
+import java.util.Arrays;
+import java.util.List;
 
-    public Mago(String escolhaArma) {
-        super(escolhaArma);
-        inicializarArma(escolhaArma);
+public class Personagem {
+  private int vida;
+  private int ataque;
+  private String arma;
+
+  public Personagem(String arma) {
+    this.vida = 500;
+    this.ataque = 0;
+    this.arma = arma;
+  }
+
+  public int getVida() {
+    return vida;
+  }
+
+  public void receberDano(int dano) {
+    vida -= dano;
+    if (vida < 0) {
+      vida = 0;
     }
+  }
 
-    private void inicializarArma(String escolhaArma) {
-        if (ARMA_VARINHA_MAGICA.equals(escolhaArma) || ARMA_LIVRO_DE_FEITICOS.equals(escolhaArma)) {
-            setAtaque(50); // Ataque padrão para ambas as armas
-        }
-    }
+  public boolean estaVivo() {
+    return vida > 0;
+  }
 
-    // Métodos específicos para cada ataque
-    public void raioDeChamas() {
-        if (ARMA_VARINHA_MAGICA.equals(getArma())) {
-            receberDano(75);
-        }
-    }
+  public int getAtaque() {
+    return ataque;
+  }
 
-    public void levitacao() {
-        if (ARMA_VARINHA_MAGICA.equals(getArma())) {
-            receberDano(50);
-        }
-    }
+  public void setAtaque(int ataque) {
+    this.ataque = ataque;
+  }
 
-    public void cemAnosDeMaldicao() {
-        if (ARMA_LIVRO_DE_FEITICOS.equals(getArma())) {
-            receberDano(50);
-        }
-    }
+  public String getArma() {
+    return arma;
+  }
 
-    public void invocacaoInfernal() {
-        if (ARMA_LIVRO_DE_FEITICOS.equals(getArma())) {
-            receberDano(75);
-        }
-    }
-}
+  public void setArma(String arma) {
+    this.arma = arma;
+  }
+  public List <String> getArmas(){
+	  return Arrays.asList(null);
+  }
+  
+ public List<String> getAtaques(){
+	  return Arrays.asList(null);
+  }
+ 
+ public int atacar(int ataque, Personagem alvo) {
+	 return 0;
+ }
+ }
